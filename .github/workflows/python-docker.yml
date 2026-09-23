@@ -1,0 +1,25 @@
+name: Python Docker
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-run-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: docker build -t python-exam-app ./python-web
+
+      - name: Run Docker Container
+        run: docker run -d -p 8000:8000 --name python-exam-container python-exam-app
+
+      - name: Verify Python Web Server
+        run: |
+          sleep 3
+          docker ps
+          curl --fail http://localhost:8000
+          echo "Python web server is running successfully!"
