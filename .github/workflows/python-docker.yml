@@ -15,11 +15,11 @@ jobs:
         run: docker build -t python-exam-app ./python-web
 
       - name: Run Docker Container
-        run: docker run -d -p 8000:8000 --name python-exam-container python-exam-app
+        run: docker run -d -p 5000:5000 --name python-exam-container python-exam-app
 
       - name: Verify Python Web Server
         run: |
           sleep 3
           docker ps
-          curl --fail http://localhost:8000
+          curl --fail http://localhost:5000
           echo "Python web server is running successfully!"
