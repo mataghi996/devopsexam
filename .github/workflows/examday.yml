@@ -1,0 +1,14 @@
+name: examday
+
+on:
+  workflow_dispatch:
+
+jobs:
+  examday:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Exam Script
+        run: |
+          echo "DevOps Exam Day"
+          echo "GitHub Actions is working successfully!"
